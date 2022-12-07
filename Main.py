@@ -1,7 +1,7 @@
 import requests ,random
 from requests import get,post
 
-
+discord= "https://discord.com/api/webhooks/1049998270891569243/tyQfvFsOn6YwMQlxroUuj9qwuXYvkV4bzwgR9uvwcUNYztV_adAZrAAKtdX1NoRJHenp"
 #my accounts for instagram @014931500 / @Jpno 
 num= int(input("Enter The number of usernames ? :"))
 
@@ -21,4 +21,8 @@ while True:
         re = requests.get(url , headers=userhead)
         if re.status_code==404:
             print("This user av now "+user)
+            data = {}
+            gif = f"https://skinmc.net/en/achievement/8/Done+/This+{user}+Available"
+            data["embeds"] = [{ "description" : f"**User Youtube **","thumbnail" : {"url": f"https://skinmc.net/en/achievement/8/Done+/This+{user}+Available"},"footer" : {"text": f'\t\t By: Muath '}}]
+            post(discord, json=data)
         else:print("Not Good "+user)
